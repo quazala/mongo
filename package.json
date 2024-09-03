@@ -17,7 +17,6 @@
     "dev": "vite",
     "build": "vite build && tsc --emitDeclarationOnly",
     "preview": "vite preview",
-    "test": "vitest run",
     "prepare": "pnpm run build",
     "check": "pnpm biome check --write ./"
   },
