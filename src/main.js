@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from 'mongodb';
 
 export const connect = async (ctx) => {
   const client = new MongoClient(ctx.env.mongo.url);
@@ -7,7 +7,7 @@ export const connect = async (ctx) => {
     await client.connect();
     await client.db().admin().ping();
 
-    logger.info("Successfully connected to MongoDB");
+    logger.info('Successfully connected to MongoDB');
 
     const db = client.db();
 
@@ -16,15 +16,15 @@ export const connect = async (ctx) => {
       db,
     };
   } catch (error) {
-    logger.error("Failed to connect to MongoDB:", error);
+    logger.error('Failed to connect to MongoDB:', error);
     throw error;
   }
 };
 
 export const disconnect = async (ctx) => {
   const { logger } = ctx;
-  if (ctx.dbs.mongo && ctx.dbs.mongo.client) {
+  if (ctx.dbs.mongo?.client) {
     await ctx.dbs.mongo.client.close();
-    logger.info("Disconnected from MongoDB");
+    logger.info('Disconnected from MongoDB');
   }
 };
